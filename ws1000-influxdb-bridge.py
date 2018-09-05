@@ -14,6 +14,7 @@ from flask    import request
 from influxdb import InfluxDBClient
 
 import json
+import os
 
 app = Flask(__name__)
 
@@ -21,24 +22,24 @@ app = Flask(__name__)
 def update_weatherstation():
     action = request.args.get('action')
     if action == 'updateraw':
-        intemp = request.args.get('intemp')
-        outtemp = request.args.get('outtemp')
-        dewpoint = request.args.get('dewpoint')
-        windchill = request.args.get('windchill')
-        inhumi = request.args.get('inhumi')
-        rainrate = request.args.get('rainrate')
-        dailyrain = request.args.get('dailyrain')
-        weeklyrain = request.args.get('weeklyrain')
-        monthlyrain = request.args.get('monthlyrain')
-        yearlyrain = request.args.get('yearlyrain')
-        outhumi = request.args.get('outhumi')
-        windspeed = request.args.get('windspeed')
-        windgust = request.args.get('windgust')
-        winddir = request.args.get('winddir')
-        absbaro = request.args.get('absbaro')
-        relbaro = request.args.get('relbaro')
-        light = request.args.get('light')
-        uv = request.args.get('uv')
+        intemp = float(request.args.get('intemp'))
+        outtemp = float(request.args.get('outtemp'))
+        dewpoint = float(request.args.get('dewpoint'))
+        windchill = float(request.args.get('windchill'))
+        inhumi = float(request.args.get('inhumi'))
+        rainrate = float(request.args.get('rainrate'))
+        dailyrain = float(request.args.get('dailyrain'))
+        weeklyrain = float(request.args.get('weeklyrain'))
+        monthlyrain = float(request.args.get('monthlyrain'))
+        yearlyrain = float(request.args.get('yearlyrain'))
+        outhumi = float(request.args.get('outhumi'))
+        windspeed = float(request.args.get('windspeed'))
+        windgust = float(request.args.get('windgust'))
+        winddir = float(request.args.get('winddir'))
+        absbaro = float(request.args.get('absbaro'))
+        relbaro = float(request.args.get('relbaro'))
+        light = float(request.args.get('light'))
+        uv = float(request.args.get('UV'))
         ws_id = request.args.get('ID')
 
         client = InfluxDBClient(HOST, PORT, USER, PASS, DB)
@@ -75,4 +76,5 @@ def update_weatherstation():
     return ""
 
 if __name__ == '__main__':
+
     app.run(port=9999, host='0.0.0.0')
