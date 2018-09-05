@@ -4,7 +4,7 @@ Description=A simple bridge to log your WS-1000 data into InfluxDB
 
 [Service]
 WorkingDirectory=/home/friedkiwi/sources/ws1000-influxdb-bridge
-ExecStart=/home/friedkiwi/sources/ws1000-influxdb-bridge/venv/bin/python /home/friedkiwi/sources/ws1000-influxdb-bridge/ws1000-influxdb-bridge.py
+ExecStart=/usr/bin/python /home/friedkiwi/sources/ws1000-influxdb-bridge/ws1000-influxdb-bridge.py
 Restart=always
 
 [Install]
