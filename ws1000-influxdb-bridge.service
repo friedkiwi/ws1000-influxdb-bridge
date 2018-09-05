@@ -3,6 +3,7 @@
 Description=A simple bridge to log your WS-1000 data into InfluxDB
 
 [Service]
+Environment=HOST=grafana.analprolap.se
 WorkingDirectory=/home/friedkiwi/sources/ws1000-influxdb-bridge
 ExecStart=/usr/bin/python /home/friedkiwi/sources/ws1000-influxdb-bridge/ws1000-influxdb-bridge.py
 Restart=always

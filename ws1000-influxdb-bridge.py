@@ -2,11 +2,12 @@
 
 # settings
 
-HOST='grafana.analprolap.se'
+HOST=''
 PORT=8086
 USER=''
 PASS=''
-DB='home'
+DB=''
+LPORT=9999
 
 # code
 from flask    import Flask
@@ -76,5 +77,11 @@ def update_weatherstation():
     return ""
 
 if __name__ == '__main__':
+    HOST  = os.getenv("HOST", "localhost")
+    PORT  = int(os.getenv("PORT", "8086"))
+    USER  = os.getenv("USER", "")
+    PASS  = os.getenv("PASS", "")
+    DB    = os.getenv("DB",   "home")
+    LPORT = int(os.getenv("LPORT", "9999"))
 
-    app.run(port=9999, host='0.0.0.0')
+    app.run(port=LPORT, host='0.0.0.0')
